@@ -10,17 +10,21 @@ const problems = [
 
 const Problem = () => {
   return (
-    <section className="bg-section-alt py-20 md:py-24">
+    <section className="border-b border-border bg-section-alt py-20 md:py-24">
       <div className="container max-w-3xl">
         <FadeIn>
-          <h2 className="text-center text-3xl font-bold text-foreground">The Problem</h2>
+          <div className="flex items-center gap-2 mb-2">
+            <span className="h-2 w-2 rounded-full bg-warning status-pulse" />
+            <span className="font-mono text-xs uppercase tracking-widest text-warning">Threat Analysis</span>
+          </div>
+          <h2 className="text-2xl font-bold text-foreground">The Problem</h2>
         </FadeIn>
         <ul className="mt-10 space-y-4">
           {problems.map((item, i) => (
             <FadeIn key={i} delay={i * 0.08}>
-              <li className="flex items-start gap-3">
-                <AlertTriangle className="mt-1 h-5 w-5 shrink-0 text-accent" />
-                <span className="text-base leading-relaxed text-muted-foreground">{item}</span>
+              <li className="flex items-start gap-3 rounded border border-border bg-card p-4">
+                <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-warning" />
+                <span className="text-sm leading-relaxed text-muted-foreground">{item}</span>
               </li>
             </FadeIn>
           ))}
