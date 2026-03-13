@@ -1,20 +1,30 @@
-import { Eye } from "lucide-react";
+import { Settings } from "lucide-react";
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-md">
-      <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Eye className="h-6 w-6 text-primary" />
-          <span className="text-xl font-bold font-display text-foreground">DriverWatch</span>
+    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
+      <div className="container flex h-14 items-center justify-between">
+        <div className="flex items-center gap-3">
+          <Settings className="h-5 w-5 text-primary status-pulse" />
+          <span className="font-mono text-sm font-bold uppercase tracking-widest text-foreground">
+            DriverWatch
+          </span>
+          <span className="rounded border border-primary/30 bg-primary/10 px-2 py-0.5 font-mono text-[10px] text-primary">
+            v3.0.0
+          </span>
         </div>
-        <a
-          href="/DriverWatch_Scope.pdf"
-          download
-          className="inline-flex h-9 items-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-        >
-          Download Scope PDF
-        </a>
+        <div className="flex items-center gap-4">
+          <span className="hidden items-center gap-2 font-mono text-xs text-muted-foreground sm:flex">
+            SYSTEM: <span className="rounded border border-accent/40 bg-accent/10 px-2 py-0.5 text-accent">ONLINE</span>
+          </span>
+          <a
+            href="/DriverWatch_Scope.pdf"
+            download
+            className="rounded border border-primary/30 bg-primary/10 px-4 py-1.5 font-mono text-xs font-medium uppercase tracking-wider text-primary transition-colors hover:bg-primary/20"
+          >
+            Download PDF
+          </a>
+        </div>
       </div>
     </header>
   );

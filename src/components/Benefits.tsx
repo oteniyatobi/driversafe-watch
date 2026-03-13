@@ -10,17 +10,21 @@ const benefits = [
 
 const Benefits = () => {
   return (
-    <section className="py-20 md:py-24">
+    <section className="border-b border-border py-20 md:py-24">
       <div className="container max-w-3xl">
         <FadeIn>
-          <h2 className="text-center text-3xl font-bold text-foreground">How Drivers Benefit</h2>
+          <div className="flex items-center gap-2 mb-2">
+            <span className="h-2 w-2 rounded-full bg-accent status-pulse" />
+            <span className="font-mono text-xs uppercase tracking-widest text-accent">Driver Benefits</span>
+          </div>
+          <h2 className="text-2xl font-bold text-foreground">How Drivers Benefit</h2>
         </FadeIn>
-        <ul className="mt-10 space-y-5">
+        <ul className="mt-10 space-y-3">
           {benefits.map((b, i) => (
             <FadeIn key={i} delay={i * 0.08}>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 className="mt-0.5 h-6 w-6 shrink-0 text-primary" />
-                <span className="text-base leading-relaxed text-muted-foreground">{b}</span>
+              <li className="flex items-start gap-3 rounded border border-border bg-card p-4">
+                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                <span className="text-sm leading-relaxed text-muted-foreground">{b}</span>
               </li>
             </FadeIn>
           ))}

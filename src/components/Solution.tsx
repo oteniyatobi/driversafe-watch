@@ -21,22 +21,26 @@ const solutions = [
 
 const Solution = () => {
   return (
-    <section className="py-20 md:py-24">
+    <section className="border-b border-border py-20 md:py-24">
       <div className="container">
         <FadeIn>
-          <h2 className="text-center text-3xl font-bold text-foreground">Our Solution</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="h-2 w-2 rounded-full bg-accent status-pulse" />
+            <span className="font-mono text-xs uppercase tracking-widest text-accent">Resolution Protocol</span>
+          </div>
+          <h2 className="text-2xl font-bold text-foreground">Our Solution</h2>
+          <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
             DriverWatch provides a complete hardware + software system to keep drivers safe.
           </p>
         </FadeIn>
-        <div className="mx-auto mt-12 grid max-w-4xl gap-8 md:grid-cols-3">
+        <div className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-3">
           {solutions.map((s, i) => (
             <FadeIn key={i} delay={i * 0.1}>
-              <div className="text-center">
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
-                  <s.icon className="h-7 w-7 text-primary" />
+              <div className="glow-border rounded-lg bg-card p-6">
+                <div className="flex h-10 w-10 items-center justify-center rounded border border-primary/30 bg-primary/10">
+                  <s.icon className="h-5 w-5 text-primary" />
                 </div>
-                <h3 className="mt-4 text-lg font-semibold text-foreground">{s.title}</h3>
+                <h3 className="mt-4 font-mono text-sm font-semibold uppercase tracking-wider text-foreground">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
               </div>
             </FadeIn>
