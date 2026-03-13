@@ -1,11 +1,11 @@
-import { Settings } from "lucide-react";
+import { Eye } from "lucide-react";
 
 const Header = () => {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
       <div className="container flex h-14 items-center justify-between">
         <div className="flex items-center gap-3">
-          <Settings className="h-5 w-5 text-primary status-pulse" />
+          <Eye className="h-5 w-5 text-primary status-pulse" />
           <span className="font-mono text-sm font-bold uppercase tracking-widest text-foreground">
             DriverWatch
           </span>
