@@ -4,7 +4,6 @@ import { Eye } from "lucide-react";
 const Hero = () => {
   return (
     <section className="relative overflow-hidden border-b border-border py-24 md:py-32 scanline">
-      {/* Grid background */}
       <div
         className="absolute inset-0 opacity-[0.04]"
         style={{
@@ -42,7 +41,7 @@ const Hero = () => {
             Reducing accidents through intelligent monitoring, instant alerts, and automated emergency response.
           </p>
 
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="mt-10">
             <a
               href="https://drive-watch-three.vercel.app/"
               target="_blank"
@@ -50,13 +49,6 @@ const Hero = () => {
               className="inline-flex items-center gap-2 rounded border border-primary bg-primary/10 px-8 py-3 font-mono text-sm font-semibold uppercase tracking-wider text-primary transition-all hover:bg-primary hover:text-primary-foreground"
             >
               Launch App
-            </a>
-            <a
-              href="/DriverWatch_Scope.pdf"
-              download
-              className="inline-flex items-center gap-2 rounded border border-border px-8 py-3 font-mono text-sm uppercase tracking-wider text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"
-            >
-              View Scope PDF
             </a>
           </div>
         </motion.div>

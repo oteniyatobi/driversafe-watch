@@ -18,11 +18,12 @@ const Header = () => {
             SYSTEM: <span className="rounded border border-accent/40 bg-accent/10 px-2 py-0.5 text-accent">ONLINE</span>
           </span>
           <a
-            href="/DriverWatch_Scope.pdf"
-            download
+            href="https://drive-watch-three.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded border border-primary/30 bg-primary/10 px-4 py-1.5 font-mono text-xs font-medium uppercase tracking-wider text-primary transition-colors hover:bg-primary/20"
           >
-            Download PDF
+            Launch App
           </a>
         </div>
       </div>
