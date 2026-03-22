@@ -10,21 +10,21 @@ const benefits = [
 
 const Benefits = () => {
   return (
-    <section className="border-b border-border py-20 md:py-24">
-      <div className="container max-w-3xl">
+    <section className="border-b border-border py-16 sm:py-20 md:py-24">
+      <div className="container max-w-3xl px-4">
         <FadeIn>
           <div className="flex items-center gap-2 mb-2">
-            <span className="h-2 w-2 rounded-full bg-accent status-pulse" />
-            <span className="font-mono text-xs uppercase tracking-widest text-accent">Driver Benefits</span>
+            <span className="h-1.5 w-1.5 rounded-full bg-accent status-pulse" />
+            <span className="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-accent">Driver Benefits</span>
           </div>
-          <h2 className="text-2xl font-bold text-foreground">How Drivers Benefit</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-foreground">How Drivers Benefit</h2>
         </FadeIn>
-        <ul className="mt-10 space-y-3">
+        <ul className="mt-8 sm:mt-10 space-y-2.5 sm:space-y-3">
           {benefits.map((b, i) => (
             <FadeIn key={i} delay={i * 0.08}>
-              <li className="flex items-start gap-3 rounded border border-border bg-card p-4">
-                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
-                <span className="text-sm leading-relaxed text-muted-foreground">{b}</span>
+              <li className="flex items-start gap-3 rounded border border-border bg-card p-3 sm:p-4">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 sm:h-5 sm:w-5 shrink-0 text-accent" />
+                <span className="text-xs sm:text-sm leading-relaxed text-muted-foreground">{b}</span>
               </li>
             </FadeIn>
           ))}

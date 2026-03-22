@@ -3,7 +3,7 @@ import { Eye } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden border-b border-border py-24 md:py-32 scanline">
+    <section className="relative overflow-hidden border-b border-border py-16 sm:py-24 md:py-32 scanline">
       <div
         className="absolute inset-0 opacity-[0.04]"
         style={{
@@ -15,7 +15,7 @@ const Hero = () => {
         }}
       />
 
-      <div className="container relative text-center">
+      <div className="container relative text-center px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -25,19 +25,19 @@ const Hero = () => {
             <Eye className="h-8 w-8 text-primary" />
           </div>
 
-          <h1 className="text-3xl font-extrabold tracking-widest text-foreground sm:text-4xl md:text-5xl">
+          <h1 className="text-3xl font-extrabold tracking-widest text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
             DRIVERWATCH
           </h1>
 
-          <div className="mx-auto mt-4 flex items-center justify-center gap-2">
-            <span className="h-px w-8 bg-primary/40" />
-            <p className="font-mono text-sm uppercase tracking-wider text-primary">
+          <div className="mx-auto mt-4 flex items-center justify-center gap-2 max-w-[280px] sm:max-w-none">
+            <span className="hidden xs:block h-px w-8 bg-primary/40" />
+            <p className="font-mono text-[10px] sm:text-sm uppercase tracking-wider text-primary">
               Real-time Driver Safety Monitoring
             </p>
-            <span className="h-px w-8 bg-primary/40" />
+            <span className="hidden xs:block h-px w-8 bg-primary/40" />
           </div>
 
-          <p className="mx-auto mt-6 max-w-xl font-body text-base text-muted-foreground">
+          <p className="mx-auto mt-6 max-w-xl font-body text-sm sm:text-base text-muted-foreground leading-relaxed px-2">
             Reducing accidents through intelligent monitoring, instant alerts, and automated emergency response.
           </p>
 
@@ -46,7 +46,7 @@ const Hero = () => {
               href="https://drive-watch-three.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded border border-primary bg-primary/10 px-8 py-3 font-mono text-sm font-semibold uppercase tracking-wider text-primary transition-all hover:bg-primary hover:text-primary-foreground"
+              className="inline-flex items-center gap-2 rounded border border-primary bg-primary/10 px-6 py-2.5 sm:px-8 sm:py-3 font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary transition-all hover:bg-primary hover:text-primary-foreground w-full sm:w-auto justify-center"
             >
               Launch App
             </a>
