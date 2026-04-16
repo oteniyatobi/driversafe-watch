@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,49 +6,46 @@
 
 @layer base {
   :root {
-    --background: 220 20% 10%;
-    --foreground: 210 20% 90%;
+    /* Automotive Dark Dashboard Base */
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
 
-    --card: 220 18% 13%;
-    --card-foreground: 210 20% 90%;
+    /* Sleek Dashboard Panels */
+    --card: 224 71% 10%;
+    --card-foreground: 213 31% 91%;
 
-    --popover: 220 18% 13%;
-    --popover-foreground: 210 20% 90%;
+    --popover: 224 71% 10%;
+    --popover-foreground: 213 31% 91%;
 
-    --primary: 190 90% 50%;
-    --primary-foreground: 220 20% 8%;
+    /* Dashboard Speedometer Blue / Accent */
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
 
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 210 20% 80%;
+    /* Metallic Slate Secondary */
+    --secondary: 222 47% 15%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 220 15% 18%;
-    --muted-foreground: 215 15% 55%;
+    --muted: 223 47% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 145 80% 42%;
-    --accent-foreground: 220 20% 8%;
+    /* High-Vis Amber Accent for Safety/Vehicles */
+    --accent: 38 92% 50%;
+    --accent-foreground: 222 47% 11%;
 
-    --destructive: 0 70% 50%;
-    --destructive-foreground: 0 0% 100%;
+    /* Emergency Red */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 20%;
-    --input: 220 15% 20%;
-    --ring: 190 90% 50%;
+    /* Hardware borders */
+    --border: 222 47% 15%;
+    --input: 222 47% 15%;
+    --ring: 217 91% 60%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --section-alt: 220 18% 12%;
-
-    --warning: 45 90% 55%;
-    --system: 190 90% 50%;
-
-    --sidebar-background: 220 20% 10%;
-    --sidebar-foreground: 210 20% 90%;
-    --sidebar-primary: 190 90% 50%;
-    --sidebar-primary-foreground: 220 20% 8%;
-    --sidebar-accent: 220 15% 18%;
-    --sidebar-accent-foreground: 210 20% 90%;
-    --sidebar-border: 220 15% 20%;
-    --sidebar-ring: 190 90% 50%;
+    --section-alt: 224 71% 6%;
+    --warning: 45 93% 47%;
+    --system: 217 91% 60%;
   }
 }
 
@@ -58,40 +55,56 @@
   }
 
   body {
-    @apply bg-background text-foreground font-body antialiased;
+    @apply bg-background text-foreground tracking-wide antialiased;
+    font-family: 'Inter', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display uppercase tracking-wider;
+    font-family: 'Outfit', sans-serif;
+    @apply tracking-tight;
   }
 }
 
-/* Scanline overlay effect */
-.scanline::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    hsl(190 90% 50% / 0.03) 2px,
-    hsl(190 90% 50% / 0.03) 4px
-  );
-  pointer-events: none;
+/* Dashboard Glass Panel Effect */
+.glass-panel {
+  @apply bg-card/60 backdrop-blur-xl border border-white/5 shadow-2xl;
 }
 
-/* Glowing border */
-.glow-border {
-  border: 1px solid hsl(190 90% 50% / 0.25);
-  box-shadow: 0 0 15px hsl(190 90% 50% / 0.08), inset 0 0 15px hsl(190 90% 50% / 0.03);
+/* Dashboard subtle glowing border */
+.dashboard-border {
+  border: 1px solid hsla(217, 91%, 60%, 0.2);
+  box-shadow: 0 0 20px hsla(217, 91%, 60%, 0.05), inset 0 0 10px hsla(217, 91%, 60%, 0.05);
 }
 
-/* Status pulse */
-@keyframes pulse-glow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+/* Dashboard Alert Highlight Glow */
+.dashboard-alert-border {
+  border: 1px solid hsla(38, 92%, 50%, 0.3);
+  box-shadow: 0 0 20px hsla(38, 92%, 50%, 0.1), inset 0 0 10px hsla(38, 92%, 50%, 0.05);
 }
-.status-pulse {
-  animation: pulse-glow 2s ease-in-out infinite;
+
+/* Engine Pulse Effects for interactive elements */
+@keyframes engine-pulse {
+  0% { box-shadow: 0 0 0 0 hsla(217, 91%, 60%, 0.4); }
+  70% { box-shadow: 0 0 0 10px hsla(217, 91%, 60%, 0); }
+  100% { box-shadow: 0 0 0 0 hsla(217, 91%, 60%, 0); }
+}
+
+.animate-pulse-slow {
+  animation: engine-pulse 2.5s infinite;
+}
+
+/* Speed lines background pattern for dynamic automotive feel */
+.bg-speed-lines {
+  background-image: 
+    linear-gradient(to right, hsla(217, 91%, 60%, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, hsla(217, 91%, 60%, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: center;
+}
+
+/* Shimmer Effect for Buttons */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
 }
