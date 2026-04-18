@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, CheckCircle } from "lucide-react";
 
 const LaunchCountdown = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -9,6 +9,49 @@ const LaunchCountdown = () => {
     minutes: 0,
     seconds: 0,
   });
+  const [email, setEmail] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleJoinWaitlist = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setIsSubmitting(true);
+    setError("");
+
+    // The Google Apps Script URL
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwLwHKfydv9xMYQwErFQO_GJ0JhNtMoYMmYDevZ4B2yVLziD8Fi-ArfUQ2F5FoWDbev/exec";
+
+    try {
+      // Mock submission if the URL hasn't been added yet
+      if (SCRIPT_URL === "YOUR_GOOGLE_SCRIPT_URL_HERE") {
+        setTimeout(() => {
+          setIsSubmitted(true);
+          setIsSubmitting(false);
+        }, 800);
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("email", email);
+
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        body: formData,
+        mode: "no-cors", // Google Scripts requires no-cors mode
+      });
+
+      setIsSubmitted(true);
+      setEmail("");
+    } catch (err) {
+      console.error("Waitlist Error:", err);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     const currentYear = new Date().getFullYear();
@@ -58,7 +101,7 @@ const LaunchCountdown = () => {
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CjxwYXRoIGQ9Ik0wIDIwaDIwVjBIMHoiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAyKSIgc3Ryb2tlLXdpZHRoPSIxIi8+Cjwvc3ZnPg==')] opacity-40 mix-blend-overlay"></div>
 
           {/* Left Text Content */}
-          <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left flex-1">
+          <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left flex-1 w-full">
             <div className="flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-md">
               <Play className="w-3.5 h-3.5 text-primary fill-primary" />
               <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-primary font-bold">
@@ -70,9 +113,43 @@ const LaunchCountdown = () => {
               Google Play Store
             </h2>
             
-            <p className="text-muted-foreground text-xs md:text-sm max-w-sm">
-              System deployment sequence scheduled for August 20. Await final clearance.
+            <p className="text-muted-foreground text-xs md:text-sm max-w-sm mb-6">
+              System deployment sequence scheduled for August 20. Join the waitlist for early access coordinates.
             </p>
+
+            <div className="w-full max-w-sm">
+              {isSubmitted ? (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center gap-3 p-3.5 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400"
+                >
+                  <CheckCircle className="w-5 h-5 flex-shrink-0" />
+                  <span className="text-sm font-medium text-left">Access coordinates secured. We'll notify you upon launch.</span>
+                </motion.div>
+              ) : (
+                <form onSubmit={handleJoinWaitlist} className="flex flex-col sm:flex-row w-full gap-3">
+                  <div className="relative flex-1">
+                    <input 
+                      type="email" 
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      placeholder="Enter your comms email" 
+                      className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all outline-none"
+                    />
+                  </div>
+                  <button 
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="bg-primary/20 hover:bg-primary/40 text-primary hover:text-white border border-primary/50 text-sm font-bold px-5 py-2.5 rounded-xl transition-all whitespace-nowrap outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? "Sending..." : "Join Waitlist"}
+                  </button>
+                </form>
+              )}
+              {error && <p className="text-red-400 text-xs mt-2">{error}</p>}
+            </div>
           </div>
 
           {/* Right Countdown Blocks */}
