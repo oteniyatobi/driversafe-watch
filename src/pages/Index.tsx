@@ -7,6 +7,7 @@ import Solution from "@/components/Solution";
 import Features from "@/components/Features";
 import Benefits from "@/components/Benefits";
 import Contact from "@/components/Contact";
+import LaunchCountdown from "@/components/LaunchCountdown";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -21,6 +22,7 @@ const Index = () => {
       <Features />
       <Benefits />
       <Contact />
+      <LaunchCountdown />
       <Footer />
     </div>
   );
