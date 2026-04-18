@@ -22,7 +22,7 @@ const LaunchCountdown = () => {
     setError("");
 
     // The Google Apps Script URL
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxRW-9ASuVIHyWK-V3atcckBcxJLZCkK4QPHcF56ZZowMeuMaY5c5TnnQ0iyBlh9Cti/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby5UDNkFqjpx0LZyQp81rjGx49mHUUmc3ugsDUYYTcwxte9P15Mr5u0-e4VFFgBpyKW/exec";
 
     try {
       // Mock submission if the URL hasn't been added yet
