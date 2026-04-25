@@ -16,7 +16,7 @@ const Contact = () => {
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:gap-4 sm:flex-row sm:justify-center">
             <a
-              href="mailto:t.oteniya@alustudent.com"
+              href="mailto:info.driverwatch@gmail.com"
               className="inline-flex items-center gap-2 rounded border border-primary bg-primary/10 px-6 py-2.5 sm:px-6 sm:py-3 font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider text-primary transition-all hover:bg-primary hover:text-primary-foreground w-full sm:w-auto justify-center"
             >
               <Mail className="h-4 w-4" />
