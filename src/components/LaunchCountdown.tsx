@@ -22,7 +22,7 @@ const LaunchCountdown = () => {
     setError("");
 
     // The Google Apps Script URL
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxdJ2SczEmdtB0XVVmdFSqUpnGUDC5anv6ET3G2sDcC3fLGs2E3QOZg14vKQiNmqApQCQ/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzcPBdBpU-f67V5Vwzz2j2Fn5iAf4cgextsplmc1qzRG2LXr-QwOkRo26cf7xEcpC3kXg/exec";
 
     try {
       // Mock submission if the URL hasn't been added yet
@@ -34,20 +34,28 @@ const LaunchCountdown = () => {
         return;
       }
 
-      const formData = new FormData();
-      formData.append("email", email);
+      // Use URLSearchParams for application/x-www-form-urlencoded format
+      // This is the most reliable way for Google Apps Script to receive data in e.parameter
+      const params = new URLSearchParams();
+      params.append("email", email);
 
       await fetch(SCRIPT_URL, {
         method: "POST",
-        body: formData,
-        mode: "no-cors", // Google Scripts requires no-cors mode
+        mode: "no-cors",
+        cache: "no-cache",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: params,
       });
 
+      // Since we use no-cors, we won't get a proper response object back, 
+      // but if the fetch didn't throw, we assume the request was sent successfully.
       setIsSubmitted(true);
       setEmail("");
     } catch (err) {
       console.error("Waitlist Error:", err);
-      setError("Something went wrong. Please try again.");
+      setError("Connection error. Please check your network and try again.");
     } finally {
       setIsSubmitting(false);
     }
