@@ -36,7 +36,7 @@ const Contact = () => {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
-                href="mailto:info.driverwatch@gmail.com"
+                href="mailto:info@driverwatch.tech"
                 className="group relative flex items-center gap-3 rounded-xl border border-primary/50 bg-primary/15 px-8 py-4 font-mono text-sm font-semibold uppercase tracking-wider text-primary transition-all hover:bg-primary hover:text-white overflow-hidden w-full sm:w-auto justify-center"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-600" />

@@ -201,7 +201,7 @@ const Hero = () => {
                     <span className="relative z-10">Launch Dashboard</span>
                   </a>
                   <a
-                    href="mailto:info.driverwatch@gmail.com"
+                    href="mailto:info@driverwatch.tech"
                     className="flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold uppercase tracking-widest text-sm text-primary border border-primary/40 bg-primary/8 hover:bg-primary/18 transition-all hover:scale-105 hover:border-primary/70 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)]"
                   >
                     <Eye className="w-4 h-4" />
