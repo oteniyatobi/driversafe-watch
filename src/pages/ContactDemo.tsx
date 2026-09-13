@@ -64,7 +64,7 @@ const ContactDemo = () => {
               Let's talk about<br />your fleet.
             </h1>
             <p className="hero__sub">
-              Tell us about your operation and we'll arrange a demo — live hardware,
+              Tell us about your operation and we'll arrange a demo: live hardware,
               the dashboard, and a walkthrough of how it works for your specific routes.
             </p>
           </FadeIn>

@@ -36,7 +36,7 @@ const About = () => (
 
         <FadeIn delay={60}>
           <p className="body-lg" style={{ marginBottom: 20 }}>
-            In 2024, a team entered Rwanda's CodeExtreme Buildathon — a 48-hour
+            In 2024, a team entered Rwanda's CodeExtreme Buildathon, a 48-hour
             technology competition that drew over 770 teams from across East Africa.
             The challenge was to build something that solved a real problem.
           </p>
@@ -46,7 +46,7 @@ const About = () => (
             The team chose road safety. Not because it was a safe bet, but because
             the numbers are hard to ignore: thousands of deaths each year across the
             region, a significant proportion of them linked to driver fatigue on
-            overnight routes. Existing solutions — if there were any — weren't
+            overnight routes. Existing solutions, where they existed at all, weren't
             built for East African roads, East African vehicles, or East African
             budgets.
           </p>
@@ -109,7 +109,7 @@ const About = () => (
             </h2>
             <p className="body" style={{ marginBottom: 16 }}>
               driverwatch is registered with the Rwanda Development Board (RDB),
-              which means it operates as a formal company — not a side project or
+              which means it operates as a formal company, not a side project or
               a prototype waiting for permission to exist.
             </p>
             <p className="body" style={{ marginBottom: 16 }}>
@@ -122,7 +122,7 @@ const About = () => (
             <p className="body">
               The goal isn't to build a product and sell it to a larger company.
               The goal is to reduce road deaths across East Africa. That requires
-              a real business — one with the sustainability to operate at scale,
+              a real business, one with the sustainability to operate at scale,
               over time.
             </p>
           </FadeIn>
@@ -136,7 +136,7 @@ const About = () => (
               East Africa has some of the highest road fatality rates in the world
               relative to vehicle ownership. Most of those deaths are preventable.
               Fatigue, distraction, and driver inattention are factors in the
-              majority of serious crashes — and none of them require better roads
+              majority of serious crashes, and none of them require better roads
               to fix. They require better monitoring.
             </p>
             <p className="body" style={{ marginBottom: 28 }}>
@@ -162,7 +162,7 @@ const About = () => (
                   lineHeight: 1.7,
                 }}
               >
-                "Safer Roads. Protected Lives." — not a slogan. A description
+                "Safer Roads. Protected Lives." Not a slogan. A description
                 of what happens when a driver gets an alert instead of falling
                 asleep.
               </p>
@@ -181,7 +181,7 @@ const About = () => (
           </h2>
           <p className="body" style={{ color: 'rgba(255,255,255,0.6)', maxWidth: 440, margin: '0 auto 32px' }}>
             Whether you run a fleet, work in transport policy, or want to partner
-            with us — get in touch.
+            with us, get in touch.
           </p>
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/contact" className="btn btn--primary btn--lg">Book a Demo</Link>

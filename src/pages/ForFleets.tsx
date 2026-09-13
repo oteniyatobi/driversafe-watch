@@ -27,11 +27,12 @@ const IconClock = () => (
   </svg>
 );
 
-const CostStat = ({ value, suffix, label }: { value: number; suffix: string; label: string }) => {
+const CostStat = ({ value, prefix = '', suffix, label }: { value: number; prefix?: string; suffix: string; label: string }) => {
   const { count, ref } = useCountUp(value);
   return (
     <div style={{ padding: '28px 0', borderBottom: '1px solid var(--border)' }}>
       <div className="stat-num" style={{ color: 'var(--navy)' }}>
+        {prefix}
         <span ref={ref as React.RefObject<HTMLSpanElement>}>{count.toLocaleString()}</span>
         {suffix}
       </div>
@@ -54,7 +55,7 @@ const ForFleets = () => (
           </h1>
           <p className="hero__sub">
             driverwatch is built for logistics companies, bus operators, and
-            transport businesses that need their drivers to arrive safely —
+            transport businesses that need their drivers to arrive safely on
             every route, every night.
           </p>
         </FadeIn>
@@ -87,7 +88,7 @@ const ForFleets = () => (
             <p className="body" style={{ marginBottom: 16 }}>
               The highest-risk window for driver fatigue is between midnight and
               5am. Body clock, reduced traffic, and long shifts combine to create
-              conditions where drowsiness isn't a possibility — it's a near-certainty
+              conditions where drowsiness isn't a possibility. It's a near-certainty
               on any route longer than four hours.
             </p>
             <p className="body" style={{ marginBottom: 16 }}>
@@ -103,8 +104,8 @@ const ForFleets = () => (
           <FadeIn delay={100}>
             <div style={{ background: 'var(--white)', borderRadius: 'var(--radius-lg)', padding: 32, border: '1px solid var(--border)' }}>
               <p className="label" style={{ marginBottom: 20 }}>What one accident costs</p>
-              <CostStat value={15000} suffix="+" label="Minimum cost of a serious road accident (USD)" />
-              <CostStat value={50000} suffix="+" label="Full liability exposure including legal fees" />
+              <CostStat value={15000} prefix="$" suffix="+" label="Minimum cost of a serious road accident (USD)" />
+              <CostStat value={50000} prefix="$" suffix="+" label="Full liability exposure including legal fees" />
               <CostStat value={3} suffix="x" label="Average insurance premium increase after a claim" />
               <div style={{ paddingTop: 20 }}>
                 <p className="body-sm">
@@ -139,7 +140,7 @@ const ForFleets = () => (
             {
               icon: <IconShield />,
               title: 'Driver accountability without surveillance',
-              body: 'The system monitors alertness, not behaviour. Drivers aren\'t recorded or judged — they\'re protected. That distinction matters for driver buy-in and for your legal standing.',
+              body: 'The system monitors alertness, not behaviour. Drivers aren\'t recorded or judged. They\'re protected. That distinction matters for driver buy-in and for your legal standing.',
               delay: 100,
             },
             {
@@ -186,9 +187,9 @@ const ForFleets = () => (
                 One prevented accident
               </p>
               <p className="body">
-                A single serious road accident — vehicle damage, cargo loss, medical
-                liability, legal costs, increased insurance — conservatively costs
-                a fleet operator $15,000 to $50,000. That figure doesn't include
+                A single serious road accident conservatively costs a fleet operator
+                $15,000 to $50,000 once you add up vehicle damage, cargo loss,
+                medical liability, legal costs and increased insurance. That figure doesn't include
                 the human cost, or the reputational damage with clients.
               </p>
             </div>
@@ -201,8 +202,8 @@ const ForFleets = () => (
               </p>
               <p className="body">
                 Hardware installation per vehicle. A monthly software subscription
-                per fleet. The numbers are available on request — and the comparison
-                with the cost of one avoided incident makes the decision clear.
+                per fleet. The numbers are available on request, and the comparison with the cost
+                of one avoided incident makes the decision clear.
               </p>
             </div>
           </FadeIn>
@@ -214,9 +215,9 @@ const ForFleets = () => (
               </p>
               <p className="body">
                 The system doesn't need to prevent ten accidents to justify its cost.
-                One prevented incident — one driver who gets an alert and pulls over
-                instead of falling asleep at the wheel — covers the investment many
-                times over.
+                One prevented incident covers the investment many times over: one
+                driver who gets an alert and pulls over instead of falling
+                asleep at the wheel.
               </p>
             </div>
           </FadeIn>

@@ -1,73 +1,45 @@
-# Welcome to your Lovable project
+# driverwatch
 
-## Project info
+Marketing site for driverwatch, a driver-fatigue monitoring system for commercial
+fleets in East Africa. Live at [driverwatch.tech](https://driverwatch.tech).
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Stack
 
-## How can I edit this code?
+React + TypeScript + Vite, with plain CSS (no UI framework). Scroll animations use
+the Intersection Observer API rather than an animation library.
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Running locally
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+npm install
+npm run dev      # http://localhost:8080
+npm run build    # production build to dist/
 ```
 
-**Edit a file directly in GitHub**
+## Structure
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```
+src/
+  pages/        Home, Product, ForFleets, About, ContactDemo, NotFound
+  components/   Nav, Footer, BrandLogo, FadeIn, ScrollToTop, WaitlistCountdown
+  hooks/        useCountUp
+  index.css     design tokens + all component styles
+public/
+  brand/        brand assets (see brand/README.md)
+  prototype.jpg hardware photo used on the Product page
+```
 
-**Use GitHub Codespaces**
+## Brand
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+`public/brand/brand-guideline.jpg` is the authoritative brand sheet. The site's
+logo is cropped from it into `mark-light.png` / `mark-dark.png`, rendered by
+`src/components/BrandLogo.tsx`.
 
-## What technologies are used for this project?
+Note: the `logo-*.svg` files in `public/brand/` draw a **different** mark from the
+guideline sheet (a rounded oval with a small wheel, rather than the sheet's pointed
+eye with a full-size wheel). They are kept for reference but are not used on the site.
 
-This project is built with:
+## Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds and
+publishes to the domain in `CNAME`.

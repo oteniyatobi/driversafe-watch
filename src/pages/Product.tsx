@@ -62,7 +62,7 @@ const Product = () => (
           </h1>
           <p className="hero__sub">
             driverwatch is a hardware-software system that fits in any vehicle and gives
-            fleet operators a clear view of driver alertness — without changing how drivers work.
+            fleet operators a clear view of driver alertness without changing how drivers work.
           </p>
         </FadeIn>
       </div>
@@ -76,7 +76,7 @@ const Product = () => (
             <div className="proto__frame">
               <img
                 src="/prototype.jpg"
-                alt="The driverwatch hardware unit — a compact navy dashboard camera with adjustable mount"
+                alt="The driverwatch hardware unit: a compact navy dashboard camera with adjustable mount"
                 width={1168}
                 height={784}
               />
@@ -103,7 +103,7 @@ const Product = () => (
                 {[
                   ['Sensor', 'Infrared camera, low-light capable'],
                   ['Processing', 'On-device, Raspberry Pi platform'],
-                  ['Connectivity', 'Cellular — no WiFi required'],
+                  ['Connectivity', 'Cellular, no WiFi required'],
                   ['Positioning', 'Integrated GPS'],
                   ['Alerts', 'Built-in audio speaker'],
                   ['Mount', 'Adjustable, fits any dashboard'],
@@ -129,8 +129,9 @@ const Product = () => (
             <span className="label">The Hardware</span>
             <h2 style={{ marginTop: 10 }}>The device that watches when you can't.</h2>
             <p className="body" style={{ marginTop: 12, maxWidth: 520 }}>
-              A compact unit that mounts to the dashboard. Built on a Raspberry Pi platform —
-              reliable, repairable, and designed for real-world East African road conditions.
+              A compact unit that mounts to the dashboard. Built on a Raspberry Pi
+              platform: reliable, repairable, and designed for real-world East
+              African road conditions.
             </p>
           </div>
         </FadeIn>
@@ -140,12 +141,12 @@ const Product = () => (
             {
               icon: <IconCamera />,
               title: 'Infrared Camera',
-              body: 'Monitors the driver\'s face in any lighting — bright midday sun or a dark rural route at 3am. The IR lens detects eye closure, blink rate, and head drop without flash or distraction.',
+              body: 'Monitors the driver\'s face in any lighting, from bright midday sun to a dark rural route at 3am. The IR lens detects eye closure, blink rate, and head drop without flash or distraction.',
             },
             {
               icon: <IconCpu />,
               title: 'On-device Processing',
-              body: 'Detection happens locally, on the device. No round-trip to a server. Alerts fire in under two seconds — fast enough to matter, even at highway speeds.',
+              body: 'Detection happens locally, on the device. No round-trip to a server. Alerts fire in under two seconds, fast enough to matter even at highway speeds.',
             },
             {
               icon: <IconMapPin />,
@@ -160,7 +161,7 @@ const Product = () => (
             {
               icon: <IconWifi />,
               title: 'Cellular Module',
-              body: 'Data syncs to the dashboard over the cellular network. No WiFi needed. Works on routes where there\'s no fixed connectivity — just a mobile signal.',
+              body: 'Data syncs to the dashboard over the cellular network. No WiFi needed. Works on routes where there\'s no fixed connectivity, just a mobile signal.',
             },
             {
               icon: <IconCamera />,
@@ -239,7 +240,7 @@ const Product = () => (
               <iframe
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
                 src="https://drive.google.com/file/d/19HsqxmRDkw-ucz9GCMC3R9I0Q0zksnqk/preview"
-                title="driverwatch — Live Demo"
+                title="driverwatch Live Demo"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
@@ -275,8 +276,8 @@ const Product = () => (
             <p className="body" style={{ marginBottom: 20 }}>
               The camera continuously measures three signals: eye openness,
               blink frequency, and head position. When those signals fall
-              outside safe thresholds — a PERCLOS score above 80%, for
-              instance, or a head drop beyond 15° — the alert fires.
+              outside safe thresholds, the alert fires. That might be a PERCLOS
+              score above 80%, or a head drop beyond 15°.
             </p>
             <p className="body">
               It's not one signal. It's a combination. A driver can blink slowly
@@ -342,8 +343,8 @@ const Product = () => (
             <span className="label">The Software</span>
             <h2 style={{ marginTop: 10 }}>A clear view of your entire fleet.</h2>
             <p className="body" style={{ marginTop: 12, maxWidth: 520 }}>
-              Fleet managers access a web dashboard — no app download required — that shows
-              every vehicle's status in one place.
+              Fleet managers access a web dashboard, with no app download required, that
+              shows every vehicle's status in one place.
             </p>
           </div>
         </FadeIn>

@@ -66,7 +66,7 @@ const Home = () => (
         <FadeIn delay={120}>
           <p className="hero__sub">
             driverwatch monitors driver alertness in real time. When fatigue or
-            distraction is detected, it acts — so your drivers stay safe and your
+            distraction is detected, it acts, so your drivers stay safe and your
             fleet keeps moving.
           </p>
         </FadeIn>
@@ -105,7 +105,7 @@ const Home = () => (
             {
               icon: <IconEye />,
               title: 'Detects fatigue before it causes harm',
-              body: 'The camera tracks eye movement, blink rate, and head position. The moment alertness drops, the driver gets an immediate audio alert — before a mistake is made.',
+              body: 'The camera tracks eye movement, blink rate, and head position. The moment alertness drops, the driver gets an immediate audio alert, before a mistake is made.',
               delay: 0,
             },
             {
@@ -117,7 +117,7 @@ const Home = () => (
             {
               icon: <IconMoon />,
               title: 'Built for overnight routes',
-              body: 'Between midnight and 5am, accident risk is highest. driverwatch runs continuously — no shift changes, no fatigue of its own.',
+              body: 'Between midnight and 5am, accident risk is highest. driverwatch runs continuously. No shift changes, no fatigue of its own.',
               delay: 200,
             },
           ].map((b, i) => (
@@ -156,7 +156,7 @@ const Home = () => (
             {
               num: '02',
               title: 'Monitor your drivers',
-              body: 'The camera tracks driver alertness continuously. GPS logs every route. All data streams to your fleet dashboard in real time — accessible from any browser.',
+              body: 'The camera tracks driver alertness continuously. GPS logs every route. All data streams to your fleet dashboard in real time, accessible from any browser.',
             },
             {
               num: '03',
@@ -190,7 +190,7 @@ const Home = () => (
       <div className="container">
         <FadeIn>
           <div className="section-hd--center">
-            <span className="label">Built to compete — and win</span>
+            <span className="label">Built to compete and win</span>
             <h2 style={{ marginTop: 10 }}>Validated at East Africa's largest buildathon.</h2>
             <p className="body" style={{ marginTop: 12 }}>
               driverwatch was built at CodeExtreme, Rwanda's premier technology buildathon,
