@@ -1,84 +1,96 @@
-import { Eye, Shield, Zap, Activity } from "lucide-react";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import Logo from "./Logo";
 
-const TICKER_ITEMS = [
-  { icon: "●", label: "System Online", value: "ACTIVE" },
-  { icon: "⚡", label: "Avg Response", value: "< 200ms" },
-  { icon: "◈", label: "AI Engine", value: "v3.0.0" },
-  { icon: "◉", label: "Fleet Monitored", value: "1,249+" },
-  { icon: "▲", label: "Uptime", value: "99.9%" },
-  { icon: "■", label: "Alerts Prevented", value: "12,847" },
+const NAV_LINKS = [
+  { label: "Home", to: "/" },
+  { label: "Features", to: "/features" },
+  { label: "About", to: "/about" },
+  { label: "Contact", to: "/contact" },
 ];
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
-      {/* Live ticker strip */}
-      <div className="border-b border-border/50 bg-black/30 h-7 overflow-hidden">
-        <div className="flex animate-marquee whitespace-nowrap h-full items-center">
-          {/* Doubled for seamless loop */}
-          {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
-            <span key={i} className="inline-flex items-center gap-2 px-6 text-[10px] font-mono text-muted-foreground border-r border-white/5">
-              <span className="text-primary text-[8px]">{item.icon}</span>
-              <span className="uppercase tracking-wider">{item.label}:</span>
-              <span className="text-primary font-bold tracking-widest">{item.value}</span>
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Main header row */}
-      <div className="container flex h-14 md:h-16 items-center justify-between px-4 sm:px-8 relative">
-        {/* Subtle scan line at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-border shadow-sm">
+      <div className="container flex h-16 items-center justify-between px-4 sm:px-8">
         {/* Logo */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          <div className="relative flex h-7 w-7 items-center justify-center">
-            <Eye className="h-4 w-4 text-primary relative z-10" />
-            <div className="absolute inset-0 rounded-full bg-primary/15 animate-pulse-slow" />
-          </div>
-          <span className="font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-foreground">
-            DriverWatch
-          </span>
-          <span className="hidden xs:inline-block rounded border border-primary/30 bg-primary/10 px-2 py-0.5 font-mono text-[9px] sm:text-[10px] text-primary">
-            v3.0.0
-          </span>
-        </div>
+        <NavLink to="/" onClick={() => setOpen(false)}>
+          <Logo size={36} />
+        </NavLink>
 
-        {/* Right side */}
-        <div className="flex items-center gap-2 sm:gap-4">
-          {/* Status pills */}
-          <div className="hidden md:flex items-center gap-3">
-            <span className="flex items-center gap-1.5 font-mono text-[10px] text-muted-foreground">
-              <Shield className="w-3 h-3 text-primary" />
-              <span className="text-primary/70">AI ACTIVE</span>
-            </span>
-            <span className="w-px h-4 bg-white/10" />
-            <span className="flex items-center gap-1.5 font-mono text-[10px]">
-              <Activity className="w-3 h-3 text-accent" />
-              <span className="text-accent">MONITORING</span>
-            </span>
-          </div>
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-1">
+          {NAV_LINKS.map((l) => (
+            <NavLink
+              key={l.to}
+              to={l.to}
+              end={l.to === "/"}
+              className={({ isActive }) =>
+                `px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  isActive
+                    ? "bg-primary/8 text-primary"
+                    : "text-foreground/70 hover:text-primary hover:bg-primary/5"
+                }`
+              }
+            >
+              {l.label}
+            </NavLink>
+          ))}
+        </nav>
 
-          <span className="hidden items-center gap-1.5 font-mono text-xs text-muted-foreground sm:flex">
-            SYSTEM:
-            <span className="flex items-center gap-1 rounded border border-accent/40 bg-accent/10 px-2 py-0.5">
-              <Zap className="w-2.5 h-2.5 text-accent" />
-              <span className="text-accent font-bold text-[10px]">ONLINE</span>
-            </span>
-          </span>
-
+        {/* CTA + mobile toggle */}
+        <div className="flex items-center gap-3">
           <a
             href="https://drive-watch-three.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative overflow-hidden rounded border border-primary/40 bg-primary/10 px-3 py-1 sm:px-4 sm:py-1.5 font-mono text-[10px] sm:text-xs font-medium uppercase tracking-wider text-primary transition-all hover:bg-primary hover:text-white hover:border-primary"
+            className="hidden sm:inline-flex items-center gap-2 bg-primary text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:opacity-90 transition-all shadow-sm"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500" />
-            <span className="relative z-10">Launch App</span>
+            Launch App
           </a>
+          <button
+            className="md:hidden p-2 rounded-lg text-foreground/70 hover:text-primary hover:bg-primary/5 transition-colors"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="md:hidden border-t border-border bg-white px-4 py-4 space-y-1">
+          {NAV_LINKS.map((l) => (
+            <NavLink
+              key={l.to}
+              to={l.to}
+              end={l.to === "/"}
+              onClick={() => setOpen(false)}
+              className={({ isActive }) =>
+                `block px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                  isActive
+                    ? "bg-primary/8 text-primary"
+                    : "text-foreground/70 hover:text-primary hover:bg-primary/5"
+                }`
+              }
+            >
+              {l.label}
+            </NavLink>
+          ))}
+          <a
+            href="https://drive-watch-three.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block mt-3 text-center bg-primary text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:opacity-90 transition-all"
+          >
+            Launch App
+          </a>
+        </div>
+      )}
     </header>
   );
 };

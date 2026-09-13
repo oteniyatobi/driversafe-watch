@@ -1,74 +1,21 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Play, CheckCircle } from "lucide-react";
+import { CheckCircle, Bell } from "lucide-react";
+import { FadeIn } from "./FadeIn";
 
 const LaunchCountdown = () => {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
 
-  const handleJoinWaitlist = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-
-    setIsSubmitting(true);
-    setError("");
-
-    // The Google Apps Script URL
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzcPBdBpU-f67V5Vwzz2j2Fn5iAf4cgextsplmc1qzRG2LXr-QwOkRo26cf7xEcpC3kXg/exec";
-
-    try {
-      // Mock submission if the URL hasn't been added yet
-      if (SCRIPT_URL === "YOUR_GOOGLE_SCRIPT_URL_HERE") {
-        setTimeout(() => {
-          setIsSubmitted(true);
-          setIsSubmitting(false);
-        }, 800);
-        return;
-      }
-
-      // Use URLSearchParams for application/x-www-form-urlencoded format
-      // This is the most reliable way for Google Apps Script to receive data in e.parameter
-      const params = new URLSearchParams();
-      params.append("email", email);
-
-      await fetch(SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        cache: "no-cache",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: params,
-      });
-
-      // Since we use no-cors, we won't get a proper response object back, 
-      // but if the fetch didn't throw, we assume the request was sent successfully.
-      setIsSubmitted(true);
-      setEmail("");
-    } catch (err) {
-      console.error("Waitlist Error:", err);
-      setError("Connection error. Please check your network and try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   useEffect(() => {
     const currentYear = new Date().getFullYear();
     const targetDate = new Date(`August 20, ${currentYear} 00:00:00`).getTime();
-
     const interval = setInterval(() => {
-      const now = new Date().getTime();
+      const now = Date.now();
       const distance = targetDate - now;
-
       if (distance < 0) {
         clearInterval(interval);
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -81,11 +28,35 @@ const LaunchCountdown = () => {
         });
       }
     }, 1000);
-
     return () => clearInterval(interval);
   }, []);
 
-  const timeBlocks = [
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setIsSubmitting(true);
+    setError("");
+    const SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbzcPBdBpU-f67V5Vwzz2j2Fn5iAf4cgextsplmc1qzRG2LXr-QwOkRo26cf7xEcpC3kXg/exec";
+    try {
+      const params = new URLSearchParams();
+      params.append("email", email);
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params,
+      });
+      setIsSubmitted(true);
+      setEmail("");
+    } catch {
+      setError("Connection error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const blocks = [
     { label: "Days", value: timeLeft.days },
     { label: "Hours", value: timeLeft.hours },
     { label: "Minutes", value: timeLeft.minutes },
@@ -93,91 +64,75 @@ const LaunchCountdown = () => {
   ];
 
   return (
-    <section className="relative py-8 md:py-12 bg-background overflow-hidden z-10 border-t border-border/50">
-      {/* Background Glows */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[80px] pointer-events-none" />
-      
-      <div className="container relative z-10 px-4 max-w-4xl mx-auto">
-        <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.6, ease: "easeOut" }}
-           viewport={{ once: true, margin: "-50px" }}
-           className="glass-panel p-6 md:p-8 rounded-2xl dashboard-border relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12"
-        >
-          {/* Subtle Grid Background */}
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CjxwYXRoIGQ9Ik0wIDIwaDIwVjBIMHoiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjAyKSIgc3Ryb2tlLXdpZHRoPSIxIi8+Cjwvc3ZnPg==')] opacity-40 mix-blend-overlay"></div>
+    <section className="py-16 bg-background border-t border-border">
+      <div className="container px-4 max-w-5xl mx-auto">
+        <FadeIn>
+          <div className="bg-white rounded-3xl border border-border shadow-sm p-8 md:p-12 flex flex-col md:flex-row items-center gap-12">
+            {/* Left */}
+            <div className="flex-1 text-center md:text-left">
+              <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full border border-primary/20 bg-primary/5">
+                <Bell className="w-3.5 h-3.5 text-primary" />
+                <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                  Upcoming Release
+                </span>
+              </div>
 
-          {/* Left Text Content */}
-          <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left flex-1 w-full">
-            <div className="flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-md">
-              <Play className="w-3.5 h-3.5 text-primary fill-primary" />
-              <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-primary font-bold">
-                Upcoming Release
-              </span>
-            </div>
-            
-            <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-white mb-2 drop-shadow-md">
-              Google Play Store
-            </h2>
-            
-            <p className="text-muted-foreground text-xs md:text-sm max-w-sm mb-6">
-              System deployment sequence scheduled for August 20. Join the waitlist for early access coordinates.
-            </p>
+              <h2 className="text-3xl font-bold text-primary mb-3">
+                Coming to Google Play Store
+              </h2>
+              <p className="text-muted-foreground text-sm max-w-sm mb-8">
+                System deployment scheduled for August 20. Join the waitlist for early access.
+              </p>
 
-            <div className="w-full max-w-sm">
               {isSubmitted ? (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="flex items-center gap-3 p-3.5 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400"
+                  className="flex items-center gap-3 p-4 rounded-xl bg-green-50 border border-green-200 text-green-700 max-w-sm"
                 >
                   <CheckCircle className="w-5 h-5 flex-shrink-0" />
-                  <span className="text-sm font-medium text-left">Access coordinates secured. We'll notify you upon launch.</span>
+                  <span className="text-sm font-medium">You're on the list! We'll notify you at launch.</span>
                 </motion.div>
               ) : (
-                <form onSubmit={handleJoinWaitlist} className="flex flex-col sm:flex-row w-full gap-3">
-                  <div className="relative flex-1">
-                    <input 
-                      type="email" 
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      placeholder="Enter your comms email" 
-                      className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all outline-none"
-                    />
-                  </div>
-                  <button 
+                <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-sm">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    placeholder="Enter your email"
+                    className="flex-1 border border-border rounded-xl px-4 py-3 text-sm text-foreground bg-background focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
+                  />
+                  <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-primary/20 hover:bg-primary/40 text-primary hover:text-white border border-primary/50 text-sm font-bold px-5 py-2.5 rounded-xl transition-all whitespace-nowrap outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-primary text-white text-sm font-semibold px-6 py-3 rounded-xl hover:opacity-90 transition-all whitespace-nowrap disabled:opacity-50"
                   >
-                    {isSubmitting ? "Sending..." : "Join Waitlist"}
+                    {isSubmitting ? "Sending…" : "Join Waitlist"}
                   </button>
                 </form>
               )}
-              {error && <p className="text-red-400 text-xs mt-2">{error}</p>}
+              {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
+            </div>
+
+            {/* Right: Countdown */}
+            <div className="flex items-center gap-3 flex-shrink-0">
+              {blocks.map((b, i) => (
+                <div
+                  key={i}
+                  className="flex flex-col items-center justify-center min-w-[70px] sm:min-w-[80px] py-4 px-2 sm:px-4 rounded-2xl bg-background border border-border"
+                >
+                  <span className="text-3xl sm:text-4xl font-bold text-primary tabular-nums">
+                    {b.value.toString().padStart(2, "0")}
+                  </span>
+                  <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mt-1">
+                    {b.label}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
-
-          {/* Right Countdown Blocks */}
-          <div className="relative z-10 flex items-center justify-center gap-2 sm:gap-3 lg:gap-4 shrink-0 w-full md:w-auto">
-            {timeBlocks.map((block, index) => (
-              <div 
-                key={index} 
-                className="flex flex-col items-center justify-center py-3 px-2 sm:px-3 md:p-4 min-w-[65px] sm:min-w-[75px] md:min-w-[90px] rounded-xl bg-black/40 border border-white/10 backdrop-blur-md dashboard-alert-border relative group overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-primary/10 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
-                <span className="text-2xl sm:text-3xl md:text-4xl font-mono font-bold text-white mb-1 tracking-widest relative z-10 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
-                  {block.value.toString().padStart(2, "0")}
-                </span>
-                <span className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-primary font-semibold relative z-10">
-                  {block.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
+        </FadeIn>
       </div>
     </section>
   );

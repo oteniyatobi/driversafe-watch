@@ -1,40 +1,75 @@
 import { FadeIn } from "./FadeIn";
-import { Activity } from "lucide-react";
+import { Eye, Camera, Smartphone, Siren } from "lucide-react";
+
+const HOW_IT_WORKS = [
+  {
+    step: "01",
+    icon: Camera,
+    title: "Hardware Camera",
+    desc: "An in-car camera continuously captures the driver's face using machine learning to detect fatigue and distraction.",
+  },
+  {
+    step: "02",
+    icon: Smartphone,
+    title: "Mobile App Alert",
+    desc: "The companion app receives instant alerts and stores driving data, keeping drivers and fleet managers informed.",
+  },
+  {
+    step: "03",
+    icon: Siren,
+    title: "Emergency Protocol",
+    desc: "If the driver is unresponsive after alerts, automated distress signals are sent to emergency contacts and nearby hospitals.",
+  },
+];
 
 const Introduction = () => {
   return (
-    <section className="border-b border-border py-20 sm:py-28 relative bg-section-alt">
-      <div className="container max-w-4xl px-4 relative z-10">
+    <section className="py-20 sm:py-28 bg-white border-b border-border">
+      <div className="container max-w-5xl px-4">
+        {/* Section header */}
         <FadeIn>
-          <div className="glass-panel p-8 sm:p-12 rounded-3xl dashboard-border relative overflow-hidden group hover:dashboard-alert-border transition-all duration-500">
-            {/* Background Gradient Hover Reveal */}
-            <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
-
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-8 relative z-10">
-              <div className="flex-shrink-0">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-destructive/10 border border-destructive/30 shadow-[0_0_15px_rgba(244,63,94,0.1)] group-hover:shadow-[0_0_20px_rgba(244,63,94,0.3)] transition-shadow">
-                  <Activity className="h-8 w-8 text-destructive animate-pulse" />
-                </div>
-              </div>
-
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-                  <span className="font-semibold text-[10px] sm:text-xs uppercase tracking-[0.15em] text-accent">
-                    Telemetry Analysis
-                  </span>
-                </div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">What is DriverWatch?</h2>
-                <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
-                  DriverWatch is an advanced driver telemetry and safety solution. By combining precision hardware 
-                  with a connected mobile application, it continuously monitors driver alertness in real-time. 
-                  When unsafe behavior, fatigue, or distraction is detected, it deploys instant alerts and 
-                  can initiate automated emergency notifications, actively reducing collision risks on the road.
-                </p>
-              </div>
+          <div className="max-w-2xl mb-16">
+            <div className="flex items-center gap-2 mb-4">
+              <Eye className="w-4 h-4 text-accent" />
+              <span className="section-label">What is DriverWatch?</span>
             </div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">
+              Advanced driver safety, intelligently monitored.
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              DriverWatch combines precision hardware with a connected mobile application to
+              continuously monitor driver alertness in real-time. When unsafe behaviour, fatigue,
+              or distraction is detected, it deploys instant alerts and initiates automated
+              emergency notifications — actively reducing collision risks.
+            </p>
           </div>
         </FadeIn>
+
+        {/* How it works steps */}
+        <div className="grid sm:grid-cols-3 gap-8 relative">
+          {/* Connector line */}
+          <div className="hidden sm:block absolute top-10 left-[calc(16.67%+24px)] right-[calc(16.67%+24px)] h-px bg-border z-0" />
+
+          {HOW_IT_WORKS.map((item, i) => (
+            <FadeIn key={i} delay={i * 0.12}>
+              <div className="relative z-10 text-center sm:text-left">
+                {/* Step number + icon */}
+                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-5">
+                  <div className="relative flex-shrink-0">
+                    <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center shadow-md">
+                      <item.icon className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-accent text-white text-[10px] font-bold flex items-center justify-center">
+                      {item.step}
+                    </span>
+                  </div>
+                </div>
+                <h3 className="font-bold text-lg text-primary mb-2">{item.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
       </div>
     </section>
   );

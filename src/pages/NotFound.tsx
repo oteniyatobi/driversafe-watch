@@ -1,24 +1,44 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { Link } from 'react-router-dom';
+import Nav from '../components/Nav';
+import Footer from '../components/Footer';
 
-const NotFound = () => {
-  const location = useLocation();
-
-  useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-  }, [location.pathname]);
-
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
-          Return to Home
-        </a>
+const NotFound = () => (
+  <div className="page">
+    <Nav />
+    <section
+      style={{
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: 'calc(100vh - 240px)',
+        padding: '80px 24px',
+      }}
+    >
+      <div style={{ textAlign: 'center', maxWidth: 440 }}>
+        <div
+          style={{
+            fontSize: '6rem',
+            fontWeight: 600,
+            color: 'var(--border)',
+            lineHeight: 1,
+            letterSpacing: '-0.04em',
+            marginBottom: 24,
+          }}
+        >
+          404
+        </div>
+        <h1 style={{ marginBottom: 12, color: 'var(--navy)' }}>Page not found</h1>
+        <p className="body" style={{ marginBottom: 32 }}>
+          The page you're looking for doesn't exist or has been moved.
+        </p>
+        <Link to="/" className="btn btn--primary btn--lg">
+          Back to Home
+        </Link>
       </div>
-    </div>
-  );
-};
+    </section>
+    <Footer />
+  </div>
+);
 
 export default NotFound;
