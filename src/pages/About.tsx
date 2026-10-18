@@ -36,7 +36,7 @@ const About = () => (
 
         <FadeIn delay={60}>
           <p className="body-lg" style={{ marginBottom: 20 }}>
-            In 2024, a team entered Rwanda's CodeExtreme Buildathon, a 48-hour
+            A team entered Rwanda's CodeExtreme Buildathon, a 48-hour
             technology competition that drew over 770 teams from across East Africa.
             The challenge was to build something that solved a real problem.
           </p>
@@ -69,7 +69,7 @@ const About = () => (
             {[
               { num: '770+', label: 'Teams at CodeExtreme' },
               { num: 'Top 7', label: 'Competition finish' },
-              { num: '2024', label: 'Founded, Kigali' },
+              { num: 'Kigali', label: 'Where we build' },
             ].map((s, i) => (
               <div
                 key={i}

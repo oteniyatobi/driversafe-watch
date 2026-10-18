@@ -36,12 +36,11 @@ const Footer = () => (
           <p className="footer__col-head">Company</p>
           <span className="footer__link" style={{ cursor: 'default' }}>Registered in Rwanda</span>
           <span className="footer__link" style={{ cursor: 'default' }}>RDB Registered</span>
-          <span className="footer__link" style={{ cursor: 'default' }}>Est. 2024</span>
         </div>
       </div>
 
       <div className="footer__bottom">
-        <span>© 2025 DriverWatch Ltd. All rights reserved.</span>
+        <span>© {new Date().getFullYear()} DriverWatch Ltd. All rights reserved.</span>
         <span>Built in Kigali, Rwanda</span>
       </div>
     </div>
