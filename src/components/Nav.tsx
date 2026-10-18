@@ -59,7 +59,7 @@ const Nav = () => {
           {/* Desktop CTAs */}
           <div className="nav__right">
             <a
-              href="https://drive-watch-three.vercel.app/"
+              href="https://app.driverwatch.tech/"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn--outline btn--sm"
@@ -118,7 +118,7 @@ const Nav = () => {
 
         <div className="nav__drawer-cta" style={{ marginTop: 'auto', paddingTop: 24, display: 'flex', flexDirection: 'column', gap: 10 }}>
           <a
-            href="https://drive-watch-three.vercel.app/"
+            href="https://app.driverwatch.tech/"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn--outline"

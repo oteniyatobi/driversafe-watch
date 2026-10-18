@@ -73,7 +73,7 @@ const Home = () => (
         <FadeIn delay={180}>
           <div className="hero__actions">
             <a
-              href="https://drive-watch-three.vercel.app/"
+              href="https://app.driverwatch.tech/"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn--primary btn--lg"

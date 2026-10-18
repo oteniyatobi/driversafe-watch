@@ -44,7 +44,7 @@ const Header = () => {
         {/* CTA + mobile toggle */}
         <div className="flex items-center gap-3">
           <a
-            href="https://drive-watch-three.vercel.app/"
+            href="https://app.driverwatch.tech/"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:inline-flex items-center gap-2 bg-primary text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:opacity-90 transition-all shadow-sm"
@@ -82,7 +82,7 @@ const Header = () => {
             </NavLink>
           ))}
           <a
-            href="https://drive-watch-three.vercel.app/"
+            href="https://app.driverwatch.tech/"
             target="_blank"
             rel="noopener noreferrer"
             className="block mt-3 text-center bg-primary text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:opacity-90 transition-all"

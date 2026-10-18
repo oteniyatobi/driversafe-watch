@@ -68,7 +68,7 @@ const Hero = () => {
               className="flex flex-col sm:flex-row gap-4"
             >
               <a
-                href="https://drive-watch-three.vercel.app/"
+                href="https://app.driverwatch.tech/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 bg-primary text-white font-semibold px-8 py-4 rounded-xl hover:opacity-90 hover:shadow-lg transition-all text-sm"

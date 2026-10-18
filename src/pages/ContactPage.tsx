@@ -16,8 +16,8 @@ const CONTACT_INFO = [
   {
     icon: ExternalLink,
     label: "Dashboard",
-    value: "drive-watch-three.vercel.app",
-    href: "https://drive-watch-three.vercel.app/",
+    value: "app.driverwatch.tech",
+    href: "https://app.driverwatch.tech/",
     sub: "Try the live app now",
   },
   {
