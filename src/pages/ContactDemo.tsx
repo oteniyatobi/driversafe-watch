@@ -115,8 +115,8 @@ const ContactDemo = () => {
                   <p className="body">
                     We typically respond within one business day. In the meantime,
                     feel free to email us directly at{' '}
-                    <a href="mailto:oluwatobijeremiahoteniya@gmail.com" className="text-link">
-                      oluwatobijeremiahoteniya@gmail.com
+                    <a href="mailto:info@driverwatch.tech" className="text-link">
+                      info@driverwatch.tech
                     </a>
                     .
                   </p>
@@ -206,8 +206,8 @@ const ContactDemo = () => {
                   {status === 'error' && (
                     <p style={{ color: '#C0392B', fontSize: '0.875rem' }}>
                       Something went wrong. Please try emailing us directly at{' '}
-                      <a href="mailto:oluwatobijeremiahoteniya@gmail.com" className="text-link">
-                        oluwatobijeremiahoteniya@gmail.com
+                      <a href="mailto:info@driverwatch.tech" className="text-link">
+                        info@driverwatch.tech
                       </a>.
                     </p>
                   )}
@@ -246,10 +246,10 @@ const ContactDemo = () => {
                 >
                   <p className="label" style={{ marginBottom: 12 }}>Direct contact</p>
                   <a
-                    href="mailto:oluwatobijeremiahoteniya@gmail.com"
+                    href="mailto:info@driverwatch.tech"
                     style={{ display: 'block', fontWeight: 600, color: 'var(--teal)', fontSize: '0.9375rem', wordBreak: 'break-word' }}
                   >
-                    oluwatobijeremiahoteniya@gmail.com
+                    info@driverwatch.tech
                   </a>
                   <p className="body-sm" style={{ marginTop: 6 }}>
                     We respond within one business day.

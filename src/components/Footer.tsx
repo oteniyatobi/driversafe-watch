@@ -26,7 +26,7 @@ const Footer = () => (
         {/* Contact */}
         <div>
           <p className="footer__col-head">Contact</p>
-          <a href="mailto:oluwatobijeremiahoteniya@gmail.com" className="footer__link">Email us</a>
+          <a href="mailto:info@driverwatch.tech" className="footer__link">Email us</a>
           <Link to="/contact" className="footer__link">Book a Demo</Link>
           <a href="https://driverwatch.tech" target="_blank" rel="noopener noreferrer" className="footer__link">driverwatch.tech</a>
         </div>
@@ -41,6 +41,9 @@ const Footer = () => (
 
       <div className="footer__bottom">
         <span>© {new Date().getFullYear()} DriverWatch Ltd. All rights reserved.</span>
+        <span>
+          Powered by <strong className="footer__powered">Auracle Stacks</strong>
+        </span>
         <span>Built in Kigali, Rwanda</span>
       </div>
     </div>

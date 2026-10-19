@@ -591,6 +591,13 @@ h3 { font-size: 1.125rem; letter-spacing: -0.01em; }
   gap: 8px;
 }
 
+@media (max-width: 640px) { .footer__bottom { flex-direction: column; align-items: flex-start; gap: 4px; } }
+
+.footer__powered {
+  color: rgba(255,255,255,0.75);
+  font-weight: 600;
+}
+
 /* ── Scroll to top ── */
 .scroll-top {
   position: fixed;

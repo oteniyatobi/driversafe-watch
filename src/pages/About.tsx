@@ -186,7 +186,7 @@ const About = () => (
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/contact" className="btn btn--primary btn--lg">Book a Demo</Link>
             <a
-              href="mailto:oluwatobijeremiahoteniya@gmail.com"
+              href="mailto:info@driverwatch.tech"
               className="btn btn--outline-white btn--lg"
             >
               Send us an email
